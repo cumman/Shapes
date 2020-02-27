@@ -11,6 +11,11 @@ namespace Figure
             Center = new Vector(x, y);
             Radius = radius;
         }
+        public Circle(Vector vec, double radius)
+        {
+            Center = vec;
+            Radius = radius;
+        }
 
         public override double GetPerimeter()
             => 2 * Math.PI * Radius;

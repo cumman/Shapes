@@ -13,6 +13,12 @@ namespace Figure
             Side = side;
             Angle = angle;
         }
+        public Square(Vector vec, double side, double angle)
+        {
+            Center = vec;
+            Side = side;
+            Angle = angle;
+        }
 
         public override double GetPerimeter()
             => 4 * Side;
