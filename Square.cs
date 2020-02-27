@@ -13,6 +13,12 @@ namespace Figure
             Side = side;
             Angle = angle;
         }
+        public Square(Vector vec, double side, double angle)
+        {
+            Center = vec;
+            Side = side;
+            Angle = angle;
+        }
 
         public override double GetPerimeter()
             => 4 * Side;
@@ -32,5 +38,8 @@ namespace Figure
             Angle += angle;
             Angle -= (int)(Angle / Math.PI) * Math.PI;
         }
+
+        public static explicit operator Square(Circle circle)
+            => new Square(circle.Center, circle.Radius * 2, 0);
     }
 }
