@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Figure
 {
@@ -33,7 +34,19 @@ namespace Figure
             return true;
         }
 
+        public override bool ContainsPoint(double x, double y)
+        {
+            return GetDistance(new Vector(x, y), Center).CompareTo(Radius) <= 0;
+        }
+
         public static explicit operator Circle(Square square)
             => new Circle(square.Center, square.Side);
+
+        public static Circle GetFromFile(string filePath)
+        {
+            var figureSettings = File.ReadAllLines(filePath)[1].Split(' ');
+            return new Circle(double.Parse(figureSettings[0]), double.Parse(figureSettings[1]),
+                double.Parse(figureSettings[2]));
+        }
     }
 }

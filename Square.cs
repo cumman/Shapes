@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
+using System.Net;
 
 namespace Figure
 {
@@ -41,5 +44,12 @@ namespace Figure
 
         public static explicit operator Square(Circle circle)
             => new Square(circle.Center, circle.Radius * 2, 0);
+
+        public static Square GetFromFile(string filePath)
+        {
+            var figureSettings = File.ReadAllLines(filePath)[1].Split(' ');
+            return new Square(double.Parse(figureSettings[0]), double.Parse(figureSettings[1]),
+                double.Parse(figureSettings[2]), double.Parse(figureSettings[3]));
+        }
     }
 }
