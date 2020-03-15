@@ -51,5 +51,10 @@ namespace Figure
             return new Square(double.Parse(figureSettings[0]), double.Parse(figureSettings[1]),
                 double.Parse(figureSettings[2]), double.Parse(figureSettings[3]));
         }
+
+        public bool TryInsertCircle(Circle circle)
+        {
+            return Side.CompareTo(2 * circle.Radius) >= 0;
+        }
     }
 }
